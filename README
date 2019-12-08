@@ -1,0 +1,81 @@
+
+CPDP_Project_2: A Messenger Application
+**************
+
+Author: Fatema Tabassum Liza
+**************
+
+Contents:
+This Messenger Application has been developed using C and C++ Language. 
+There are 2 C++ Program Files along with some other necessary files.
+Some of the significant files are: 
+    messenger_server.cpp
+    messenger_client.cpp
+    user_info_file (store all the user informations)
+    server_config (store the information for server configuration)
+    client_config (store the information for client configuration)
+    Makefile
+    README (this file)
+All these files are in the same directory.
+*************
+
+Execution:
+To compile and get the executables run command: make all
+Makefile:
+1. The makefile compiles both the programs properly and produces executables files.
+2. Use 'make all' to compile and execute.
+
+Server Initialization: ./messenger_server user_info_file server_config
+[User needs to update the port number in server_config file according to the execution environment]
+
+Client Initialization: ./messenger_client client_config 5400
+[The user needs provide a port number other than the one specified in the files which is a different port no for each client]
+[The user has to update the values for servhost and servport in the client_config file according to the execution environment]
+**************
+
+**************
+All the programs and files have been checked in linprog for execution.
+**************
+
+Features:
+The necessary features available in this program is described below:
+    1. The server is run with addition two arguments - a configuaration file name [server_config] and a user information file name [user_info_file].
+    2. After connecting to the server
+        a. A new user can register using the 'r' command.
+        b. An existing user can login from client using the 'l' command.
+        c. Client can quit the program using the 'exit' command.
+        d. A logged in user can logout from the server using the 'logout' command.
+        e. Any user can login from the client after being logged out [can be the old user or another user]
+        f. Using m friend_username message' command, a logged in users can send messages to his/her friends.
+        g. A logged in user can invite another user (not currently in the user's friend list) to become friend and chat using the 'i potential_friend_username message' command.
+        h. Using the 'ia inviter_username' command, an user can accept an invitation from another user.
+        i. The user has to login after registration since automatic login isn't enabled for newly registered user.
+
+    3. Server side - I/O multiplexing : Done using select() function.
+    4. Client side - I/O multiplexing : Done using POSIC() threads.
+    5. Server and Client both programs can handle SIGINT signal. Opened connections are closed before exiting the program as well.
+    6. Each time a client register is successful the information is written into the user_info_file.
+    7. Each time Ctrl-C is pressed all the new information is written into user_info_file.
+    8. The necessary socket connections are closed properly when a user issues the command 'logout'.
+    9. STL containers (vectors, unordered_map, iterator etc) have been used as data structures on server and client side.
+    10. All the messages for keep the communication consistent have been shown
+    11. messages with spaces can also be passed
+
+
+**************
+
+Limitations:
+1. Did not used Qt for any GUI (Graphical User Interface).
+
+**************
+
+Acknowledgement and References:
+
+For implementing the program I've taken the basic ideas from the UNP and APUE books, the class
+lecture slides and sample programs used in the class. I have read several online blogs aind github
+code for implementing Sockets and Threads. I used stackoverflow whenever I was stuck in somewhere during the implementation.
+
+**************
+
+
+
